@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,26 +10,20 @@
 
     {% verbatim %}
     <div ng-controller="ScrumboardController">
-        {{ person.name }} is {{ person.age }} years old.
+        {{ person.name }}
+        <div ng-repeat="list in data">
+            <h3>{{ list.name }}</h3>
+            <ul>
+                <li ng-repeat="card in list.cards">{{ card.title }}</li>
+            </ul>
+            <input type="text" ng-model="new_title" />
+            <button ng-click="add(list, new_title)">+</button>
+        </div>
     </div>
     {% endverbatim %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script>
-        (function(){
-            "use strict";
-
-            angular.module("scrumboard.demo", [])
-                .controller("ScrumboardController", [ "$scope", ScrumboardController]);
-
-            function ScrumboardController($scope) {
-                $scope.person = {
-                    name: "Joe",
-                    age: 35
-                };
-            }
-        }());
-    </script>
+    <script src="{% static 'scrumboard/scrumboard.js' %}"></script>
 
 
 </body>
