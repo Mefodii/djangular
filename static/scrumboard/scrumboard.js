@@ -13,6 +13,16 @@
             list.cards.push(card);
         };
 
+        $scope.addCategory = function (data, name) {
+            var cat = {
+                name: name,
+                cards: [
+                ]
+            };
+
+            data.push(cat);
+        };
+
         $scope.data = [
             {
                 name: "Django demo",
