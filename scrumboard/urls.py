@@ -1,11 +1,9 @@
-from django.urls import path
-from django.views.generic import TemplateView
+from .api import ListViewSet, CardViewSet
 
-from .api import ListApi, CardApi
+from rest_framework.routers import DefaultRouter
 
+router = DefaultRouter()
+router.register("lists", ListViewSet)
+router.register("cards", CardViewSet)
 
-urlpatterns = [
-    path('lists', ListApi.as_view(), name="scrumboard_lists"),
-    path('cards', CardApi.as_view(), name="scrumboard_cards"),
-    path('home', TemplateView.as_view(template_name="scrumboard/home.html"), name="scrumboard_home")
-]
+urlpatterns = router.urls
