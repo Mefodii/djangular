@@ -3,22 +3,22 @@
 
 > python -m venv venv-name
 
--
+-----
 <h4>Activate venv</h4>
 
 > venv-name\Scripts\activate.bat
 
--
+-----
 <h4>Install django</h4>
 
 > pip install django
 
--
+-----
 <h4>Create project</h4>
 
 > django-admin startproject project-name
 
--
+-----
 <h4>Move to created project directory</h4>
 
 > cd project-name
@@ -35,7 +35,7 @@
 
 > python manage.py runserver
 
--
+-----
 <h4>Add new app in project</h4>
 
 - Create new app
@@ -43,7 +43,7 @@
 - Add appname to settings.py -> INSTALLED_APPS = []
 - Add in projectname/urls.py -> path('appname/', include("appname.urls"))
 
--
+-----
 <h4>Make migration</h4>
 
 - Generate migration scrips
@@ -55,14 +55,14 @@
 - Run migrations
   > python manage.py migrate
 
--
+-----
 <h4>Add/Update model</h4>
 
 - Write new class in app/models.py
 - Class uses models.Model
 - Make migration
 
--
+-----
 <h4>Create new page/url django design</h4>
 
 - Add processing logic to new def function in view.py
@@ -74,21 +74,21 @@
   - Better give a name to the new url
 - Create html file which will be used
 
--
+-----
 <h4>Install Django Rest</h4>
 
 - Install package
  > pip install djangorestframework
 - Add 'rest_framework' to INSTALLED_APPS
 
--
+-----
 <h4>Serialize model into JSON</h4>
 
 - Add serializers.py to app
   - Class model_nameSerializer(serializer.ModelSrializer):
   class Meta:
   model = model_name
-  fields = "__all__"
+  fields = `"__all__"`
 - Add api.py to app
   - Class model_nameApi)ListAPIView):
   queryset = model_name.objects.all()
