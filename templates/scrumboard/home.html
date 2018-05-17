@@ -4,28 +4,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Scrumboard project / Home</title>
+    <link rel="stylesheet" type="text/css"
+            href="{% static 'scrumboard/css/scrumboard.css' %}">
 </head>
 <body ng-app="scrumboard.demo">
 
     {% verbatim %}
     <div ng-controller="ScrumboardController">
-        <div ng-repeat="list in data">
+        <div class="flex">
+            <input type="text" ng-model="new_category" />
+            <button ng-click="addCategory(data, new_category)">Add category</button>
+        </div>
+        <div class="list" ng-repeat="list in data">
             <h3>{{ list.name }}</h3>
             <ul>
-                <li ng-repeat="card in list.cards">{{ card.title }}</li>
+                <li ng-repeat="card in list.cards">
+                    <scrumboard-card></scrumboard-card>
+                </li>
             </ul>
-            <input type="text" ng-model="new_title" />
-            <button ng-click="add(list, new_title)">+</button>
+            <div class="flex">
+                <input type="text" ng-model="new_title" />
+                <button ng-click="add(list, new_title)">+</button>
+                <button ng-click="deleteList(list)">Delete</button>
+            </div>
+
         </div>
-        <p>------------------</p>
-        <input type="text" ng-model="new_category" />
-        <button ng-click="addCategory(data, new_category)">Add category</button>
     </div>
     {% endverbatim %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="{% static 'scrumboard/scrumboard.js' %}"></script>
+    <script src="{% static 'scrumboard/card.directive.js' %}"></script>
 
 
 </body>

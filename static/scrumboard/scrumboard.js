@@ -27,8 +27,28 @@
                 ]
             };
 
-            data.push(cat);
+            $http.post("/scrumboard/lists/", cat)
+                .then(function(response){
+                    data.push(response.data);
+                },
+                function(){
+                    alert("Could not insert list");
+                });
         };
+
+
+        $scope.deleteList = function(list){
+            var url = "/scrumboard/lists/" + list.id + "/";
+            $http.delete(url).then(
+                function(){
+                    var lists = $scope.data;
+                    lists.splice(
+                        lists.indexOf($scope.data),
+                        1
+                    );
+                }
+            );
+        }
 
         $scope.data = [];
         $http.get("/scrumboard/lists/").then(function(response){
