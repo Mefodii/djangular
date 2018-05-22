@@ -13,6 +13,13 @@
     {% verbatim %}
     <div ng-controller="ScrumboardController">
         <div class="flex">
+            <input type="text" ng-model="user1"/>
+            <input type="text" ng-model="password1"/>
+            <button ng-click="login(user1, password1)">Login</button>
+            <a href="/auth_api/logout">Logout</a>
+        </div>
+
+        <div class="flex">
             <input type="text" ng-model="new_category" />
             <button ng-click="addCategory(data, new_category)">Add category</button>
         </div>
@@ -35,6 +42,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="{% static 'scrumboard/scrumboard.js' %}"></script>
+    <script src="{% static 'scrumboard/scrumboard.config.js' %}"></script>
     <script src="{% static 'scrumboard/card.directive.js' %}"></script>
 
 

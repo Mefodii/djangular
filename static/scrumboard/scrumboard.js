@@ -43,12 +43,17 @@
                 function(){
                     var lists = $scope.data;
                     lists.splice(
-                        lists.indexOf($scope.data),
+                        lists.indexOf(list),
                         1
                     );
                 }
             );
         }
+
+        $scope.login = function(user1, password1){
+            $http.post("/auth_api/login/",
+                {username: user1, password: password1});
+        };
 
         $scope.data = [];
         $http.get("/scrumboard/lists/").then(function(response){
