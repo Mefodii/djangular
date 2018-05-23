@@ -49,3 +49,7 @@ ul {
 .flex button {
     flex-basis: auto;
 }
+
+.logout {
+    float: right;
+}
