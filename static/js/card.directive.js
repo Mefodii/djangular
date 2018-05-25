@@ -36,7 +36,7 @@
                 };
 
                 $scope.modelOptions = {
-                    debounce: 1500
+                    debounce: 300
                 };
 
                 $scope.move = function () {
